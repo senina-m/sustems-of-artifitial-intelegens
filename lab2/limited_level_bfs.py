@@ -40,8 +40,8 @@ distance = {}
 for key in graph:
     color[key] = 0
     distance[key] = MAXINT
-start = "Симферополь"
-finish = "Москва"
+finish = "Ниж.Новгород"
+start = "Харьков"
 bfs_level(start, graph, color, distance, 3)
 # [print(f"{key} =>  {distance[key]}") for key in distance]
 way = get_way(start, finish, distance) 

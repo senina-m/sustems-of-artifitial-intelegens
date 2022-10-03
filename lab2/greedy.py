@@ -1,15 +1,12 @@
-from get_graph import get_graph
+from get_graph import get_graph, get_he_graph
 from queue import PriorityQueue
 
-#DONO....
-def heuristic(a, b, graph):
-   # print(f"a={a}, b={b}")
-   if b in graph[a].keys():
-      return graph[a][b]
-   else:
-      return 10000
 
-def greedy(start, finish, graph):
+def heuristic(v, he_graph):
+    return he_graph[v]
+
+
+def greedy(start, finish, graph, he_graph):
    pqueue = PriorityQueue()
    pqueue.put(start, 0)
    prev = {}
@@ -23,7 +20,7 @@ def greedy(start, finish, graph):
       
       for neighbour in graph[v]:
          if neighbour not in prev:
-            priority = heuristic(finish, neighbour, graph)
+            priority = heuristic(neighbour, graph)
             pqueue.put(neighbour, priority)
             prev[neighbour] = v
    return get_way(start, finish, prev, graph)         
@@ -35,7 +32,7 @@ def get_way(start, finish, prev, graph):
    while v != start:
       way.append(v)
       way_long += graph[v][prev[v]]
-      print(graph[v][prev[v]])
+      # print(graph[v][prev[v]])
       v = prev[v]
    # way += graph[v][start]
    way.append(start)
@@ -43,11 +40,10 @@ def get_way(start, finish, prev, graph):
 
 
 if __name__=="__main__":
-    graph = get_graph()
-    for city in graph:
-      print(graph[city])
-
-    start = "Волгоград"
-    finish = "Москва"
-    way, long = greedy(start, finish, graph)
-    print(way, long)
+   graph = get_graph()
+   he_graph = get_he_graph()
+   
+   finish = "Ниж.Новгород"
+   start = "Харьков"
+   way, long = greedy(start, finish, graph, he_graph)
+   print(way, long)

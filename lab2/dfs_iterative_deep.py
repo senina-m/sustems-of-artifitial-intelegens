@@ -28,8 +28,8 @@ def get_way(start, finish, prev):
 if __name__=="__main__":
     graph = get_graph()
 
-    start = "Волгоград"
-    finish = "Москва"
+    finish = "Ниж.Новгород"
+    start = "Харьков"
     prev = dfs_iterative_deep(start, finish, graph)
     way = get_way(start, finish, prev) 
     print(way)

@@ -28,8 +28,8 @@ prev = {}
 
 for key in graph:
     prev[key] = ""
-start = "Волгоград"
-finish = "Москва"
+finish = "Ниж.Новгород"
+start = "Харьков"
 dfs(start, finish, "", graph, prev)
 way = get_way(start, finish, prev) 
 print(way)

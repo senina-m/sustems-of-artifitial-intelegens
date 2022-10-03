@@ -1,22 +1,16 @@
-from get_graph import get_graph
+from get_graph import get_graph, get_he_graph
 from queue import PriorityQueue
 
-#DONO....
-def heuristic(a, b, graph):
-   # print(f"a={a}, b={b}")
-    # if b in graph[a].keys():
-    #     return graph[a][b]
-    # else:
-    #    return 10000
-    return 0
+def heuristic(v, he_graph):
+    return he_graph[v]
 
-def a_star(start, stop, graph):
+def a_star(start, finish, graph, he_graph):
     pqueue = PriorityQueue()
     pqueue.put(start, 0)
     prev = {}
-    cost_so_far = {}
+    path_v = {} # how far is v from the start
     prev[start] = None
-    cost_so_far[start] = 0
+    path_v[start] = 0
 
     while not pqueue.empty():
         v = pqueue.get()
@@ -25,10 +19,10 @@ def a_star(start, stop, graph):
             break
       
         for neighbour in graph[v]:
-            new_cost = cost_so_far[v] + graph[v][neighbour]
-            if neighbour not in cost_so_far or new_cost < cost_so_far[neighbour]:
-                cost_so_far[neighbour] = new_cost
-                priority = new_cost + heuristic(finish, neighbour, graph)
+            new_cost = path_v[v] + graph[v][neighbour]
+            if neighbour not in path_v or new_cost < path_v[neighbour]:
+                path_v[neighbour] = new_cost
+                priority = new_cost + heuristic(neighbour, he_graph)
                 pqueue.put(neighbour, priority)
                 prev[neighbour] = v
                 
@@ -41,7 +35,7 @@ def get_way(start, finish, prev, graph):
    while v != start:
       way.append(v)
       way_long += graph[v][prev[v]]
-      print(graph[v][prev[v]])
+    #   print(graph[v][prev[v]])
       v = prev[v]
    # way += graph[v][start]
    way.append(start)
@@ -50,9 +44,10 @@ def get_way(start, finish, prev, graph):
 
 if __name__=="__main__":
     graph = get_graph()
-
-    finish = "Орел"
-    start = "Волгоград"
+    he_graph = get_he_graph()
     
-    way, long = a_star(start, finish, graph)
+    finish = "Ниж.Новгород"
+    start = "Харьков"
+    
+    way, long = a_star(start, finish, graph, he_graph)
     print(way, long)

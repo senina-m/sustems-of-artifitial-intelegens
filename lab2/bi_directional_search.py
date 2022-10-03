@@ -34,9 +34,9 @@ def bi_directional_search(start, finish, graph):
 
 if __name__=="__main__":
     graph = get_graph()
-
-    start = "Волгоград"
-    finish = "Москва"
+    
+    finish = "Ниж.Новгород"
+    start = "Харьков"
     way = bi_directional_search(start, finish, graph)
     print(way)
 

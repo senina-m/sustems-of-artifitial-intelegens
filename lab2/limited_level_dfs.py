@@ -30,8 +30,8 @@ if __name__=="__main__":
 
     for key in graph:
         prev[key] = ""
-    start = "Волгоград"
-    finish = "Москва"
+    finish = "Ниж.Новгород"
+    start = "Харьков"
     level = 5
     dfs_limit(start, finish, "", graph, prev, level, 0)
     way = get_way(start, finish, prev) 
