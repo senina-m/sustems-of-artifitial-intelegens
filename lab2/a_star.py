@@ -18,13 +18,13 @@ def a_star(start, finish, graph, he_graph):
         if v == finish:
             break
       
-        for neighbour in graph[v]:
-            new_cost = path_v[v] + graph[v][neighbour]
-            if neighbour not in path_v or new_cost < path_v[neighbour]:
-                path_v[neighbour] = new_cost
-                priority = new_cost + heuristic(neighbour, he_graph)
-                pqueue.put(neighbour, priority)
-                prev[neighbour] = v
+        for neighbor in graph[v]:
+            new_cost = path_v[v] + graph[v][neighbor]
+            if neighbor not in path_v or new_cost < path_v[neighbor]:
+                path_v[neighbor] = new_cost
+                priority = new_cost + heuristic(neighbor, he_graph)
+                pqueue.put(neighbor, priority)
+                prev[neighbor] = v
                 
     return get_way(start, finish, prev, graph)         
       

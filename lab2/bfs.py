@@ -9,11 +9,11 @@ def bfs(v, graph, color, distance):
     while(len(queue) != 0):
         v = queue.pop()
         color[v] = 1
-        for neighbour in graph[v]:
-            if color[neighbour] == 0:
-                distance[neighbour] = distance[v] + 1
-                color[neighbour] = 1
-                queue.append(neighbour)
+        for neighbor in graph[v]:
+            if color[neighbor] == 0:
+                distance[neighbor] = distance[v] + 1
+                color[neighbor] = 1
+                queue.append(neighbor)
     return
             
 def get_way(start, finish, distance):

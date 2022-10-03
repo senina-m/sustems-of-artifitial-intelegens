@@ -9,8 +9,8 @@ def dfs_limit(v, finish, city_from, graph, prev, level, current_level):
         if v == finish:
             print("Way was found!")
             return
-        for neighbour in graph[v]:
-            dfs_limit(neighbour, finish, v, graph, prev, level, current_level + 1)
+        for neighbor in graph[v]:
+            dfs_limit(neighbor, finish, v, graph, prev, level, current_level + 1)
             
 def get_way(start, finish, prev):
     if prev[finish] == "":

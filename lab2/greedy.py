@@ -18,11 +18,11 @@ def greedy(start, finish, graph, he_graph):
       if v == finish:
          break
       
-      for neighbour in graph[v]:
-         if neighbour not in prev:
-            priority = heuristic(neighbour, graph)
-            pqueue.put(neighbour, priority)
-            prev[neighbour] = v
+      for neighbor in graph[v]:
+         if neighbor not in prev:
+            priority = heuristic(neighbor, he_graph)
+            pqueue.put(neighbor, priority)
+            prev[neighbor] = v
    return get_way(start, finish, prev, graph)         
       
 def get_way(start, finish, prev, graph):

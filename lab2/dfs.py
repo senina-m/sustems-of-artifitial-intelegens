@@ -9,8 +9,8 @@ def dfs(v, finish, city_from, graph, prev):
         if v == finish:
             print("Way was found!")
             return
-        for neighbour in graph[v]:
-            dfs(neighbour, finish, v, graph, prev)
+        for neighbor in graph[v]:
+            dfs(neighbor, finish, v, graph, prev)
             
 def get_way(start, finish, prev):
     v = finish
